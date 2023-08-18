@@ -1,17 +1,21 @@
 import React from 'react'
 import Link from 'next/link'
-import styles from './NavLink.module.css'
 
-export default function NavLink({href,text,icon,badge}) {
+export default function NavLink({href,text,icon,badge,active}) {
   return (
-    <div>
-      <Link href={href} className={styles.link}>
-				<span className={styles.link}>
+    <li>
+      <Link 
+				href={href} 
+				className={`nav-link flex items-center lg:flex-col lg:text-center text-secondary  lg:gap-y-3 text-sm lg:text-xs font-medium ${active === 'yes' ? 'opaque-bg active' : ''}`}
+			>
+				<span className="flex items-center lg:flex-col lg:order-2 lg:gap-y-2">
 					{icon && icon}
 					{text}
 				</span>
-				<span className={styles.badge}>{badge && badge}</span>
+				{badge &&
+					<span className="lg:order-1 relative opaque-bg text-orange rounded-xl px-2 border-current border text-[10px]"> {badge}</span>
+				}
 			</Link>
-    </div>
+    </li>
   )
 }

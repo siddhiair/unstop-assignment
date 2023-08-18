@@ -1,5 +1,7 @@
+import 'material-icons/iconfont/outlined.css';
 import './globals.css'
 import { Inter } from 'next/font/google'
+import NavBar from '@/components/common/navbar/NavBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +13,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="lg:flex lg:gap-x-4">
+          <nav className='site-nav lg:bg-white p-5 lg:py-1 lg:min-h-screen'>
+            <NavBar />
+          </nav>
+          <main className='site-content lg:grow bg-white'>
+            {children}
+          </main>
+        </div>
+      </body>
     </html>
   )
 }
