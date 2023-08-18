@@ -28,7 +28,7 @@ export default function NavBar() {
 				active={pathname == "/my-library" ? "yes" : "no"}
 			/>
 			<NavLink 
-				text="Round Status" 
+				text={<>Round <br className='hidden lg:block'></br>Status</>} 
 				href="/round-status" 
 				icon={<span className="material-icons-outlined">beenhere</span>} 
 				active={pathname == "/round-status" ? "yes" : "no"}

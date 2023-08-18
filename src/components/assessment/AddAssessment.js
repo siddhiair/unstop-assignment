@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import SectionTitle from '../common/titles/SectionTitle'
 import ModalWrapper from '../common/modal/ModalWrapper';
+import AddAssessmentForm from '../forms/AddAssessmentForm';
 
 export default function AddAssessment() {
 	const [modalShown,setModalShown] = useState(false)
@@ -25,8 +26,8 @@ export default function AddAssessment() {
 				</div>
 			</div>
 			{modalShown && 
-				<ModalWrapper handleModalShown={toggleModal} title="Add Assessment">
-					<h3>this is modal body</h3>
+				<ModalWrapper handleModalShown={toggleModal} title="Create New Assessment">
+					<AddAssessmentForm />
 				</ModalWrapper>
 			}
 		</>

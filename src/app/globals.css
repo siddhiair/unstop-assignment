@@ -22,7 +22,7 @@ body {
   border-radius: 8px;
   overflow: hidden;
   position: relative;
-  padding: 10px 20px 12px;
+  padding: 10px 15px 12px;
 }
 #menu .nav-link.active{
   color: var(--primary);
@@ -42,7 +42,7 @@ body {
   opacity: .10;
 }
 .modal-backdrop{
-	position: absolute;
+	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -102,6 +102,27 @@ body {
 	padding: 10px 0;
 	border:none;
 	cursor: pointer;
+}
+.form-group{
+  margin-bottom: 20px;
+}
+.form-group label{
+  display: block;
+  margin-bottom: .65em;
+}
+.form-control{
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid var(--borderColorLight);
+  padding: 6px 15px;
+  width: 100%;
+}
+.form-control.has-error{
+  border-color: var(--orange);
+}
+.form-control:focus,.form-control:focus-visible{
+  outline: 0;
+  border-color: var(--secondary);
 }
 @media screen and (min-width: 768px){
 	.modal .modal-body{
