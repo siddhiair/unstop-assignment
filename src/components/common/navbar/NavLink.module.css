@@ -1,0 +1,17 @@
+.link{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+@media screen and (min-width: 993px){
+	.link{
+		flex-direction: column;
+		justify-content: center;
+	}
+	span.link{
+		order:2
+	}
+	.badge{
+		order: 1;
+	}
+}
