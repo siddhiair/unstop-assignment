@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="lg:flex lg:gap-x-4">
-          <nav className='site-nav lg:bg-white p-5 lg:py-1 lg:min-h-screen'>
+          <nav className='site-nav bg-white px-5 py-2 lg:py-3 lg:min-h-screen'>
             <NavBar />
           </nav>
           <main className='site-content lg:grow bg-white'>

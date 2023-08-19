@@ -35,7 +35,7 @@ export default function AssessmentOverview({data}) {
       <div className={`w-1/2 md:w-1/3 md:order-1 lg:w-auto whitespace-nowrap border-r border-b lg:border-b-0 ${styles.item}`}>
         <CardTitle text={data.total_assessments.label} />
 				<div className='flex gap-x-4 xl:gap-x-5 items-center'>
-					<Icon>{data.total_assessments.icon}</Icon>
+					<Icon className="text-purple">{data.total_assessments.icon}</Icon>
 					<div>
 						<Num count={data.total_assessments.count} />
 					</div>
@@ -55,7 +55,7 @@ export default function AssessmentOverview({data}) {
       <div className={`w-full md:w-2/3 md:order-2 lg:w-auto lg:grow border-b lg:border-b-0 lg:border-r ${styles.item}`}>
 				<CardTitle text={data.candidates.label} />
 				<div className='flex gap-x-2 md:gap-x-4 xl:gap-x-5 items-center'>
-					<Icon>{data.candidates.icon}</Icon>
+					<Icon className="text-purple">{data.candidates.icon}</Icon>
 					<div className={`${styles.details} flex gap-x-4 xl:gap-x-5`}>
 						{data.candidates.details?.map((el,i)=>{
 							return(

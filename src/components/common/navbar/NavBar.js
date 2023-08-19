@@ -1,39 +1,84 @@
-'use client'
+'use client';
 
-import React from 'react'
+import React, { useState } from 'react'
 import NavLink from './NavLink'
 import { usePathname  } from 'next/navigation'
+import PageTitle from '../titles/PageTitle';
 
 export default function NavBar() {
+	const [menuShown, setMenuShown] = useState(false)
+
 	const pathname = usePathname ();
 
+	const toggleMenu = () => {
+		if(window.matchMedia("max-width:768px")){
+			const menu = document.querySelector("#menu")
+			menu.classList.toggle("in");
+			setMenuShown(!menuShown);
+		}
+	}
+	let pageTitle = "";
+	switch(pathname){
+		case "/":
+			pageTitle = 'Dashboard';
+			break;
+		case "/assessment":
+			pageTitle = "Assessment";
+			break;
+		default:
+			pageTitle="Unstop"
+	}
   return (
-    <ul id="menu" className='flex flex-col gap-y-2'>
-			<NavLink 
-				text="Dashboard" 
-				href="/" 
-				icon={<span className="material-icons-outlined">dashboard</span>} 
-				active={pathname == "/" ? "yes" : "no"}
-			/>
-			<NavLink 
-				text="Assignment" 
-				href="/assessment" 
-				icon={<span className="material-icons-outlined">note_alt</span>} 
-				active={pathname == "/assessment" ? "yes" : "no"}
-			/>
-			<NavLink 
-				text="My Library" 
-				href="/my-library" 
-				icon={<span className="material-icons-outlined">quiz</span>} 
-				active={pathname == "/my-library" ? "yes" : "no"}
-			/>
-			<NavLink 
-				text={<>Round <br className='hidden lg:block'></br>Status</>} 
-				href="/round-status" 
-				icon={<span className="material-icons-outlined">beenhere</span>} 
-				active={pathname == "/round-status" ? "yes" : "no"}
-				badge="Admin" 
-			/>
-		</ul>
+    <>
+			<ul id="menu" className='flex flex-col gap-y-2'>
+				<li className='flex justify-between items-center md:hidden'>
+					<span className='text-sm lg:text-xs font-medium'>Menu</span>
+					<button className='py-1 pl-3' onClick={toggleMenu}>
+						<span className="material-icons-outlined">close</span>
+					</button>
+				</li>
+				<NavLink 
+					text="Dashboard" 
+					href="/" 
+					icon={<span className="material-icons-outlined">dashboard</span>} 
+					active={pathname == "/" ? "yes" : "no"} 
+					handleClick={toggleMenu}
+				/>
+				<NavLink 
+					text="Assignment" 
+					href="/assessment" 
+					icon={<span className="material-icons-outlined">note_alt</span>} 
+					active={pathname == "/assessment" ? "yes" : "no"}
+					handleClick={toggleMenu}
+				/>
+				<NavLink 
+					text="My Library" 
+					href="/my-library" 
+					icon={<span className="material-icons-outlined">quiz</span>} 
+					active={pathname == "/my-library" ? "yes" : "no"}
+					handleClick={toggleMenu}
+				/>
+				<li className='my-2 border-t border-dashed border-borderColorLight'></li>
+				<NavLink 
+					text={<>Round <br className='hidden lg:block'></br>Status</>} 
+					href="/round-status" 
+					icon={<span className="material-icons-outlined">beenhere</span>} 
+					active={pathname == "/round-status" ? "yes" : "no"}
+					handleClick={toggleMenu}
+					badge="Admin" 
+				/>
+			</ul>
+			{window.innerWidth<768 &&
+				<div className='flex justify-between items-center'>
+					<div className='flex items-center gap-x-5'>
+						<button className='py-2 leading-none' onClick={toggleMenu}><span className="material-icons-outlined">menu</span></button>					
+						<PageTitle text={pageTitle} />
+					</div>
+				</div>
+			}
+			{menuShown && window.innerWidth<768 && 
+				<div className='modal-backdrop' style={{ display: menuShown ? 'block' : 'none' }} onClick={toggleMenu}></div>
+			}
+		</>
   )
 }

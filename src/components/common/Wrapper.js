@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-export default function Wrapper({children, classes}) {
+export default function Wrapper({children, className}) {
   return (
-    <div className={`wrapper p-4 lg:p-5 ${classes && classes}`}>
+    <div className={`wrapper p-4 lg:p-5 ${className && className}`}>
 			{children}
 		</div>
   )
