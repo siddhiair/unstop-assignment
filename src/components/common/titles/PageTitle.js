@@ -1,7 +1,8 @@
 import React from 'react'
 
-export default function PageTitle({text,className}) {
+export default function PageTitle({tag,text,className}) {
+  const HeadingTag = tag ? tag : 'h1';
   return (
-    <h1 className={`text-base md:text-lg lg:text-xl text-secondary font-semibold ${className && className}`}>{text}</h1>
+    <HeadingTag className={`text-base md:text-lg lg:text-xl text-secondary font-semibold ${className && className}`}>{text}</HeadingTag>
   )
 }

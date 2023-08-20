@@ -1,15 +1,25 @@
 import React, { useState } from 'react'
 import SubmitButton from '../common/buttons/SubmitButton';
 import SkillsInput from './SkillsInput';
+import { useMyAssessmentContext } from '@/context/MyAssessmentContext';
 
 export default function AddAssessmentForm() {
+	function getTodayDate() {
+		const today = new Date();
+		const options = { day: '2-digit', month: 'short', year: 'numeric' };
+		return today.toLocaleDateString('en-US', options);
+	}
+	
+	const TodayDate = getTodayDate();
+
 	const [values, setValues] = useState({
 		assessment_name:'',
 		purpose: '',
 		description:'',
 		skill: '',
 		skills:[],
-		duration:''
+		duration:'',
+		date: TodayDate
 	})
 
 	const [errors, setErrors] = useState({
@@ -21,6 +31,7 @@ export default function AddAssessmentForm() {
 
 	const [formSuccess, setFormSuccess] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
+	const {addAssessment} = useMyAssessmentContext({})
 
 	const handleInputChange = (e) => {
 		//get name and value attr values from e.target object using destructuring
@@ -81,9 +92,10 @@ export default function AddAssessmentForm() {
 		}
 		//if no error, reset form values
 		else{
-			const lstData = JSON.parse(localStorage.getItem("assessments")) || [];
-			lstData.push(values);
-			localStorage.setItem("assessments",JSON.stringify(lstData));
+			//const lstData = JSON.parse(localStorage.getItem("assessments")) || [];
+			// lstData.push(values);
+			// localStorage.setItem("assessments",JSON.stringify(lstData));
+			addAssessment(values)
 
 			setValues({
 				assessment_name:'',
@@ -153,29 +165,6 @@ export default function AddAssessmentForm() {
 					</select>
 				</div>
 
-				{/* <div className='form-group'>
-					<label className='text-xs md:text-sm xl:text-base'>Skills</label>
-					{values.skills && 
-						<div className='skills-wrapper'>
-							{values.skills.map((el,i)=>(
-								<span key={i}>{el}</span>
-							))}
-						</div>
-					}
-					<div className='relative'>
-						<input
-							type='text' 
-							placeholder='Type here' 
-							className='form-control' 
-							name="skill" 
-							value={values.skill} 
-							onChange={handleInputChange}
-						/>
-
-						<button className="btn-xs font-medium p-3 absolute right-2 top-0 bottom-0 z-20 cursor-pointer">Add</button>
-					</div>
-				</div> */}
-
 				<SkillsInput handleChange={handleInputChange} skills={values.skills} skill={values.skill} />
 
 				<div className='form-group'>
@@ -191,10 +180,12 @@ export default function AddAssessmentForm() {
 					/>
 				</div>
 
+				<input type="hidden" value={TodayDate} />
+
 				<SubmitButton text={isSubmitting ? "Adding Assignment..." : "Save"} disabled={isSubmitting} />
 				{/** show error alert if validation fails **/}
 				{formSuccess &&
-					<span className='opaque-bg relative py-1 px-4 rounded text-green block my-5 text-sm'>Assignment added successfully.</span>
+					<span className='opaque-bg relative py-1 px-4 rounded text-green block my-5 text-sm'>Assessment added successfully.</span>
 				}
 			</form>
 		</>

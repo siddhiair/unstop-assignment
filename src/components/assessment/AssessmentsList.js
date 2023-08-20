@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from 'react'
 import AddAssessment from './AddAssessment'
 import AssessmentCard from './AssessmentCard'
+import {  useMyAssessmentContext } from '@/context/MyAssessmentContext';
 
 export default function AssessmentsList() {
-  const [assessments, setAssessments] = useState([]);
-  useEffect(()=>{
-    const asmtList = JSON.parse(localStorage.getItem('assessments')) || [];
-    setAssessments(asmtList);
-  },[])
+
+  const {assessmentList} = useMyAssessmentContext();
 
   return (
     <div className='flex flex-wrap gap-y-4 xl:gap-y-7 -mx-4 mt-6'>
-			<AddAssessment />
+      <AddAssessment />
       
-      {/**loop through assessment list fetched from localStorage and display***/}
+      {/**loop through assessment list and display***/}
       {
-        assessments.length>0 && 
-        assessments.map((el,i)=>(
+        assessmentList.length>0 && 
+        assessmentList.map((el,i)=>(
             <AssessmentCard key={i} data={el} />
         ))
       }
-		</div>
+    </div>
   )
 }

@@ -1,12 +1,13 @@
-'use client';  //serve as client component to handle click events and states
+'use client';  //serve as client component to handle click events, hooks and states
 
 import SectionTitle from '@/components/common/titles/SectionTitle';
 import PageTitle from "@/components/common/titles/PageTitle";
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Wrapper from '@/components/common/Wrapper';
 import AssessmentOverview from '@/components/assessment/AssessmentOverview';
 import AssessmentsList from '@/components/assessment/AssessmentsList';
 import Loader from '@/components/common/Loader';
+import { MyAssessmentContextProvider } from '@/context/MyAssessmentContext';
 
 const TabLink = ({text,isActive,btnKey,changeTab}) => {
   return(
@@ -123,9 +124,7 @@ export default function Assessments() {
       }
       <Wrapper className="border-b border-b-primarylight !py-0">
         <div className='md:flex items-center'>
-          {window.innerWidth>767 &&
-            <PageTitle text="Assessment" className="md:border-r border-borderColorRight pr-5 mr-5" />
-          }
+          <PageTitle text="Assessment" className="hidden md:block md:border-r border-borderColorRight pr-5 mr-5" />
           <div className='tabs-wrapper'>
             <ul tole="tablist" className='flex md:gap-x-5'>
               <TabLink text="My Assessments" btnKey="my_assessments" isActive={activeTab==='my_assessments'?true:false} changeTab={handleTabChange} />
@@ -162,8 +161,9 @@ export default function Assessments() {
                 </IconTabLink>
               </div>
             </div>
-            
-            <AssessmentsList />
+            <MyAssessmentContextProvider>
+              <AssessmentsList />
+            </MyAssessmentContextProvider>
           </Wrapper>
         </div>
       }

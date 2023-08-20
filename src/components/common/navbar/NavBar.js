@@ -17,6 +17,8 @@ export default function NavBar() {
 			setMenuShown(!menuShown);
 		}
 	}
+
+	//set page title for each route
 	let pageTitle = "";
 	switch(pathname){
 		case "/":
@@ -28,6 +30,7 @@ export default function NavBar() {
 		default:
 			pageTitle="Unstop"
 	}
+
   return (
     <>
 			<ul id="menu" className='flex flex-col gap-y-2'>
@@ -68,15 +71,14 @@ export default function NavBar() {
 					badge="Admin" 
 				/>
 			</ul>
-			{window.innerWidth<768 &&
-				<div className='flex justify-between items-center'>
-					<div className='flex items-center gap-x-5'>
-						<button className='py-2 leading-none' onClick={toggleMenu}><span className="material-icons-outlined">menu</span></button>					
-						<PageTitle text={pageTitle} />
-					</div>
+			
+			<div className='flex justify-between items-center md:hidden'>
+				<div className='flex items-center gap-x-5'>
+					<button className='py-2 leading-none' onClick={toggleMenu}><span className="material-icons-outlined">menu</span></button>					
+					<PageTitle text={pageTitle} tag="h2" />
 				</div>
-			}
-			{menuShown && window.innerWidth<768 && 
+			</div>
+			{menuShown &&  
 				<div className='modal-backdrop' style={{ display: menuShown ? 'block' : 'none' }} onClick={toggleMenu}></div>
 			}
 		</>

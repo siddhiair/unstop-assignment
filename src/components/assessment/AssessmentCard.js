@@ -45,8 +45,8 @@ export default function AssessmentCard({data}) {
 							<SectionTitle text={data.assessment_name} />
 							<div className='flex items-center'>
 								<span className='font-semibold text-xs xl:text-sm pr-2 mr-2 border-r border-r-borderColorLight'>{data.purpose}</span>
-								<div className='flex items-center'>
-									<span className="material-icons-outlined text-base">calendar_month</span> <span className='text-lightGray text-xs'>18 Aug, 2023</span>
+								<div className='flex items-center gap-x-1'>
+									<span className="material-icons-outlined text-base">calendar_month</span> <span className='text-lightGray text-xs'>{data.date}</span>
 								</div>
 							</div>
 						</div>
