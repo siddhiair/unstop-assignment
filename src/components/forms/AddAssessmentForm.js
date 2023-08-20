@@ -3,7 +3,7 @@ import SubmitButton from '../common/buttons/SubmitButton';
 import SkillsInput from './SkillsInput';
 import { useMyAssessmentContext } from '@/context/MyAssessmentContext';
 
-export default function AddAssessmentForm() {
+export default function AddAssessmentForm({modalRef}) {
 	function getTodayDate() {
 		const today = new Date();
 		const options = { day: '2-digit', month: 'short', year: 'numeric' };
@@ -79,7 +79,7 @@ export default function AddAssessmentForm() {
 		});
 
 		// Scroll to the top of the error container div if there are errors
-		const modalContainer = document.querySelector('.modal.shown'); // Replace with the ID of your error container div
+		const modalContainer = modalRef.current;
 		const hasErrors = Object.values(newErrors).some((error) => error);
 		if (hasErrors) {
 			if (modalContainer) {
@@ -92,9 +92,6 @@ export default function AddAssessmentForm() {
 		}
 		//if no error, reset form values
 		else{
-			//const lstData = JSON.parse(localStorage.getItem("assessments")) || [];
-			// lstData.push(values);
-			// localStorage.setItem("assessments",JSON.stringify(lstData));
 			addAssessment(values)
 
 			setValues({

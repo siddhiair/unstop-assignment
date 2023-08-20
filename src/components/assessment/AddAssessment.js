@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import SectionTitle from '../common/titles/SectionTitle'
 import ModalWrapper from '../common/modal/ModalWrapper';
 import AddAssessmentForm from '../forms/AddAssessmentForm';
 
 export default function AddAssessment() {
-	const [modalShown,setModalShown] = useState(false)
+	const [modalShown,setModalShown] = useState(false);
+	const modalRef =  useRef();
 
 	const toggleModal = () => {
 		setModalShown(!modalShown)
@@ -24,8 +25,8 @@ export default function AddAssessment() {
 				</div>
 			</div>
 			{modalShown && 
-				<ModalWrapper handleModalShown={toggleModal} title="Create New Assessment">
-					<AddAssessmentForm />
+				<ModalWrapper handleModalShown={toggleModal} title="Create New Assessment" modalRef={modalRef}>
+					<AddAssessmentForm modalRef={modalRef} />
 				</ModalWrapper>
 			}
 		</>

@@ -2,7 +2,7 @@
 
 import SectionTitle from '@/components/common/titles/SectionTitle';
 import PageTitle from "@/components/common/titles/PageTitle";
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Wrapper from '@/components/common/Wrapper';
 import AssessmentOverview from '@/components/assessment/AssessmentOverview';
 import AssessmentsList from '@/components/assessment/AssessmentsList';
@@ -34,7 +34,9 @@ const IconTabLink = ({children,handleClick}) => {
 export default function Assessments() {
   const [activeTab, setActiveTab] = useState('my_assessments');
   const [activeTabClass, setActiveTabClass] = useState('active');
-  const [loading,isLoading] = useState(false)
+  const [loading,isLoading] = useState(false);
+
+  const overviewRef = useRef();
 
   const overviewData = {
     total_assessments:{
@@ -112,9 +114,8 @@ export default function Assessments() {
   }
 
   const showOverview = (e) => {
-    const overviewWrapper = document.querySelector("#overview-wrapper");
     e.target.closest(".icon-tab").classList.toggle("active")
-    overviewWrapper.classList.toggle("in")
+    overviewRef.current.classList.toggle("in")
   }
 
   return (
@@ -136,7 +137,7 @@ export default function Assessments() {
 
       {activeTab === 'my_assessments' && 
         <div className={`tab-panel ${activeTabClass}`}>
-          <div id='overview-wrapper'>
+          <div id='overview-wrapper' ref={overviewRef}>
             <Wrapper>
               <SectionTitle text="Assessments Overview" className="hidden md:block" />
               <AssessmentOverview data={overviewData} />

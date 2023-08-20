@@ -1,20 +1,19 @@
 'use client';
 
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import NavLink from './NavLink'
 import { usePathname  } from 'next/navigation'
 import PageTitle from '../titles/PageTitle';
 
 export default function NavBar() {
-	const [menuShown, setMenuShown] = useState(false)
+	const [menuShown, setMenuShown] = useState(false);
+	const menuRef =  useRef();
 
 	const pathname = usePathname ();
 
 	const toggleMenu = () => {
 		if(window.matchMedia("max-width:767px")){
-			console.log(window)
-			const menu = document.querySelector("#menu")
-			menu.classList.toggle("in");
+			menuRef.current.classList.toggle("in");
 			setMenuShown(!menuShown);
 		}
 	}
@@ -34,7 +33,7 @@ export default function NavBar() {
 
   return (
     <>
-			<ul id="menu" className='flex flex-col gap-y-2'>
+			<ul id="menu" className='flex flex-col gap-y-2' ref={menuRef}>
 				<li className='flex justify-between items-center lg:hidden'>
 					<span className='text-sm lg:text-xs font-medium'>Menu</span>
 					<button className='py-1 pl-3' onClick={toggleMenu}>

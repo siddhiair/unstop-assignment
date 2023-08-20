@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function ModalWrapper({children, title, handleModalShown}) {
+export default function ModalWrapper({children, title, handleModalShown, modalRef}) {
 	const [shownClass,setShownClass] = useState(false)
 
   //add shown class when component is mounted/rendered
@@ -12,7 +12,7 @@ export default function ModalWrapper({children, title, handleModalShown}) {
 
   return(
 		<>
-			<div className={`modal ${shownClass ? 'shown' : ''}`}>
+			<div className={`modal ${shownClass ? 'shown' : ''}`} ref={modalRef}>
 				<div className="modal-dialog">
 					<div className='modal-content'>
             <div className='modal-header flex items-center justify-between gap-x-6'>
