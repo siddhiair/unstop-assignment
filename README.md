@@ -30,4 +30,4 @@ npm run dev
 - Open your browser and visit http://localhost:3000 to view the web application.
 
 #### Add assessments:
-Assessment added through form are stores in localStorage and then displayed under 'My Assessments'
+Assessment added through form are stored in localStorage and then displayed under 'My Assessments'
