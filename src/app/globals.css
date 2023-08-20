@@ -164,6 +164,9 @@ body {
   .modal .close-modal{
     padding: 20px 0;
   }
+  .site-nav .modal-backdrop{
+    display: none !important;
+  }
 }
 .icon-tab.active{
   background: var(--primarylight);

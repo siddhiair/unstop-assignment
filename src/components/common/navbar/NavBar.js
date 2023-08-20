@@ -11,7 +11,8 @@ export default function NavBar() {
 	const pathname = usePathname ();
 
 	const toggleMenu = () => {
-		if(window.matchMedia("max-width:768px")){
+		if(window.matchMedia("max-width:767px")){
+			console.log(window)
 			const menu = document.querySelector("#menu")
 			menu.classList.toggle("in");
 			setMenuShown(!menuShown);
