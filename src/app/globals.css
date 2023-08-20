@@ -155,11 +155,12 @@ body {
 }
 .pageTitle-wrapper,.site-nav{
   position: sticky;
-  z-index: 100;
+  z-index: 50;
   top:0;
 }
 .pageTitle-wrapper{
   top: 45px;
+  z-index: 45;
 }
 @media screen and (min-width: 768px){
   .site-nav{
@@ -223,7 +224,7 @@ body {
     position: fixed;
     left: 15px;
     top: 8px;
-    z-index: 120;
+    z-index: 50;
   }
 }
 @media screen and (max-width: 767px){
