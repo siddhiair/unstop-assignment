@@ -165,7 +165,12 @@ body {
     padding: 20px 0;
   }
 }
-
+.icon-tab.active{
+  background: var(--primarylight);
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  color: var(--primary);
+}
 @media screen and (max-width: 767px){
   #menu{
     position: fixed;
@@ -187,6 +192,14 @@ body {
     visibility: visible;
     transform: none;
     opacity: 1;
+  }
+  #overview-wrapper{
+    max-height: 0;
+    overflow: hidden;
+    transition: all .3s linear;
+  }
+  #overview-wrapper.in{
+    max-height: 100vh;
   }
 }
 

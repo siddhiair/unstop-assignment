@@ -22,6 +22,14 @@ const TabLink = ({text,isActive,btnKey,changeTab}) => {
   )
 }
 
+const IconTabLink = ({children,handleClick}) => {
+  return(
+    <button className='icon-tab w-10 h-10 flex items-center justify-center bg-white rounded-full transition' onClick={handleClick}>
+      {children}
+    </button>
+  );
+}
+
 export default function Assessments() {
   const [activeTab, setActiveTab] = useState('my_assessments');
   const [activeTabClass, setActiveTabClass] = useState('active');
@@ -102,6 +110,12 @@ export default function Assessments() {
     })
   }
 
+  const showOverview = (e) => {
+    const overviewWrapper = document.querySelector("#overview-wrapper");
+    e.target.closest(".icon-tab").classList.toggle("active")
+    overviewWrapper.classList.toggle("in")
+  }
+
   return (
     <>
       {loading && 
@@ -123,12 +137,32 @@ export default function Assessments() {
 
       {activeTab === 'my_assessments' && 
         <div className={`tab-panel ${activeTabClass}`}>
+          <div id='overview-wrapper'>
+            <Wrapper>
+              <SectionTitle text="Assessments Overview" className="hidden md:block" />
+              <AssessmentOverview data={overviewData} />
+            </Wrapper>
+          </div>
+
           <Wrapper>
-            <SectionTitle text="Assessments Overview" />
-            <AssessmentOverview data={overviewData} />
-          </Wrapper>
-          <Wrapper>
-            <SectionTitle text="My Assessment" />
+            <div className='flex items-center justify-between gap-x-5'>
+              <SectionTitle text="My Assessment" className="hidden md:block" />
+              <PageTitle text="My Assessment" className="md:hidden" />
+              <div className='flex gap-x-1 md:hidden'>
+                <IconTabLink>
+                  <span className='material-icons-outlined'>search</span>
+                </IconTabLink>
+
+                <IconTabLink>
+                  <span className='material-icons-outlined'>filter_alt</span>
+                </IconTabLink>
+
+                <IconTabLink handleClick={showOverview} className='icon-tab'>
+                  <span className='material-icons-outlined'>bar_chart</span>
+                </IconTabLink>
+              </div>
+            </div>
+            
             <AssessmentsList />
           </Wrapper>
         </div>

@@ -36,7 +36,7 @@ export default function AssessmentCard({data}) {
   return (
 		<div className='w-full md:w-1/2 xl:w-1/3 px-4'>
 			<div 
-				className="card bg-white border border-borderColorLight rounded-md h-full w-full p-4"
+				className="card bg-white border border-borderColorLight rounded-md h-full w-full p-4 transition hover:border-secondary"
 			>
 				<div className='flex justify-between mb-2 pb-2 lg:mb-4 lg:pb-4 border-b border-dashed border-b-borderColorLight'>
 					<div className='flex gap-x-3 md:block'>

@@ -42,7 +42,7 @@ export default function AssessmentOverview({data}) {
 				</div>
       </div>
 
-      <div className={`w-1/2 md:w-1/3 md:order-4 lg:w-auto whitespace-nowrap border-b md:border-b-0 ${styles.item}`}>
+      <div className={`w-1/2 md:w-1/3 md:order-4 lg:w-auto 2xl:basis-[190px] whitespace-nowrap border-b md:border-b-0 ${styles.item}`}>
 				<CardTitle text={data.total_purpose.label} />
 				<div className='flex gap-x-4 xl:gap-x-5 items-center'>
 					<Icon className="text-primary">{data.total_purpose.icon}</Icon>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import SubmitButton from '../common/buttons/SubmitButton';
+import SkillsInput from './SkillsInput';
 
 export default function AddAssessmentForm() {
 	const [values, setValues] = useState({
@@ -109,6 +110,7 @@ export default function AddAssessmentForm() {
 			{Object.values(errors).includes(true) &&
 				<span className='opaque-bg relative py-1 px-4 rounded text-orange block my-5 text-sm'>Please fill the required fields.</span>
 			}
+			
 			<form className='' onSubmit={handleFormSubmit} noValidate>
 				<div className='form-group'>
 					<label className='text-xs md:text-sm xl:text-base'>Name of assessment</label>
@@ -151,7 +153,7 @@ export default function AddAssessmentForm() {
 					</select>
 				</div>
 
-				<div className='form-group'>
+				{/* <div className='form-group'>
 					<label className='text-xs md:text-sm xl:text-base'>Skills</label>
 					{values.skills && 
 						<div className='skills-wrapper'>
@@ -160,15 +162,21 @@ export default function AddAssessmentForm() {
 							))}
 						</div>
 					}
-					<input
-						type='text' 
-						placeholder='Type here' 
-						className='form-control' 
-						name="skill" 
-						value={values.skill} 
-						onChange={handleInputChange}
-					/>
-				</div>
+					<div className='relative'>
+						<input
+							type='text' 
+							placeholder='Type here' 
+							className='form-control' 
+							name="skill" 
+							value={values.skill} 
+							onChange={handleInputChange}
+						/>
+
+						<button className="btn-xs font-medium p-3 absolute right-2 top-0 bottom-0 z-20 cursor-pointer">Add</button>
+					</div>
+				</div> */}
+
+				<SkillsInput handleChange={handleInputChange} skills={values.skills} skill={values.skill} />
 
 				<div className='form-group'>
 					<label className='text-xs md:text-sm xl:text-base'>Duration of assessment</label>
