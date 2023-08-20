@@ -15,7 +15,7 @@
 }
 
 body {
-  overflow-x: hidden;
+  max-width: 100%;
   background: var(--primarylight);
   color: var(--secondary);
 }
@@ -34,7 +34,6 @@ body {
 }
 .site-content{
   position: relative;
-  overflow: hidden;
   min-height: 110vh;
 }
 .opaque-bg{
@@ -134,7 +133,7 @@ body {
   border-color: var(--secondary);
 }
 .btn[disabled] {
-  opacity: .6;
+  opacity: 0.6;
 }
 .tab-panel{
   opacity: 0;
@@ -154,7 +153,18 @@ body {
   background: rgba(255,255,255,.8);
   z-index: 80;
 }
+.pageTitle-wrapper,.site-nav{
+  position: sticky;
+  z-index: 100;
+  top:0;
+}
+.pageTitle-wrapper{
+  top: 45px;
+}
 @media screen and (min-width: 768px){
+  .site-nav{
+    position: static;
+  }
 	.modal .modal-body{
 		padding: 15px 30px;
 	}
@@ -164,8 +174,8 @@ body {
   .modal .close-modal{
     padding: 20px 0;
   }
-  .site-nav .modal-backdrop{
-    display: none !important;
+  .pageTitle-wrapper{
+    top: 0;
   }
 }
 .icon-tab.active{
@@ -174,7 +184,20 @@ body {
   border-radius: 50%;
   color: var(--primary);
 }
-@media screen and (max-width: 767px){
+@media screen and (min-width: 1024px){
+  .site-nav{
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+  .site-nav .modal-backdrop{
+    display: none !important;
+  }
+  .site-content{
+    max-width: calc(100% - 145px);
+  }
+}
+@media screen and (max-width: 1023px){
   #menu{
     position: fixed;
     top:0;
@@ -195,6 +218,17 @@ body {
     visibility: visible;
     transform: none;
     opacity: 1;
+  }
+  .toggle-siteMenu{
+    position: fixed;
+    left: 15px;
+    top: 8px;
+    z-index: 120;
+  }
+}
+@media screen and (max-width: 767px){
+  .toggle-siteMenu{
+    position: static;
   }
   #overview-wrapper{
     max-height: 0;

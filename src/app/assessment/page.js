@@ -122,7 +122,7 @@ export default function Assessments() {
       {loading && 
         <Loader />
       }
-      <Wrapper className="border-b border-b-primarylight !py-0">
+      <Wrapper className="border-b border-b-primarylight !py-0 md:pl-16 lg:pl-5 bg-white pageTitle-wrapper">
         <div className='md:flex items-center'>
           <PageTitle text="Assessment" className="hidden md:block md:border-r border-borderColorRight pr-5 mr-5" />
           <div className='tabs-wrapper'>

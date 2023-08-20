@@ -31,8 +31,8 @@ const Num = ({count,increased,increasedBy,decreased,decreasedBy}) => {
 
 export default function AssessmentOverview({data}) {
   return (
-    <div className={`mt-4 flex flex-wrap lg:flex-nowrap ${styles.itemsWrap}`}>
-      <div className={`w-1/2 md:w-1/3 md:order-1 lg:w-auto whitespace-nowrap border-r border-b lg:border-b-0 ${styles.item}`}>
+    <div className={`mt-4 flex flex-wrap xl:flex-nowrap ${styles.itemsWrap}`}>
+      <div className={`w-1/2 md:w-1/3 md:order-1 xl:w-auto whitespace-nowrap border-r border-b xl:border-b-0 ${styles.item}`}>
         <CardTitle text={data.total_assessments.label} />
 				<div className='flex gap-x-4 xl:gap-x-5 items-center'>
 					<Icon className="text-purple">{data.total_assessments.icon}</Icon>
@@ -42,7 +42,7 @@ export default function AssessmentOverview({data}) {
 				</div>
       </div>
 
-      <div className={`w-1/2 md:w-1/3 md:order-4 lg:w-auto 2xl:basis-[190px] whitespace-nowrap border-b md:border-b-0 ${styles.item}`}>
+      <div className={`w-1/2 md:w-1/3 md:order-4 xl:w-auto 2xl:basis-[190px] whitespace-nowrap border-b md:border-b-0 ${styles.item}`}>
 				<CardTitle text={data.total_purpose.label} />
 				<div className='flex gap-x-4 xl:gap-x-5 items-center'>
 					<Icon className="text-primary">{data.total_purpose.icon}</Icon>
@@ -52,7 +52,7 @@ export default function AssessmentOverview({data}) {
 				</div>
 			</div>
 
-      <div className={`w-full md:w-2/3 md:order-2 lg:w-auto lg:grow border-b lg:border-b-0 lg:border-r ${styles.item}`}>
+      <div className={`w-full md:w-2/3 md:order-2 xl:w-auto xl:grow border-b xl:border-b-0 xl:border-r ${styles.item}`}>
 				<CardTitle text={data.candidates.label} />
 				<div className='flex gap-x-2 md:gap-x-4 xl:gap-x-5 items-center'>
 					<Icon className="text-purple">{data.candidates.icon}</Icon>
@@ -70,7 +70,7 @@ export default function AssessmentOverview({data}) {
 				</div>
 			</div>
 
-      <div className={`w-full md:w-2/3 md:order-3 lg:w-auto lg:grow md:border-r ${styles.item}`}>
+      <div className={`w-full md:w-2/3 md:order-3 xl:w-auto xl:grow md:border-r ${styles.item}`}>
 				<CardTitle text={data.candidates_source.label} />
 				<div className='flex gap-x-2 md:gap-x-4 xl:gap-x-5 items-center'>
 					<Icon className="text-pink">{data.candidates_source.icon}</Icon>

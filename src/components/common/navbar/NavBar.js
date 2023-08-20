@@ -35,7 +35,7 @@ export default function NavBar() {
   return (
     <>
 			<ul id="menu" className='flex flex-col gap-y-2'>
-				<li className='flex justify-between items-center md:hidden'>
+				<li className='flex justify-between items-center lg:hidden'>
 					<span className='text-sm lg:text-xs font-medium'>Menu</span>
 					<button className='py-1 pl-3' onClick={toggleMenu}>
 						<span className="material-icons-outlined">close</span>
@@ -73,11 +73,9 @@ export default function NavBar() {
 				/>
 			</ul>
 			
-			<div className='flex justify-between items-center md:hidden'>
-				<div className='flex items-center gap-x-5'>
-					<button className='py-2 leading-none' onClick={toggleMenu}><span className="material-icons-outlined">menu</span></button>					
-					<PageTitle text={pageTitle} tag="h2" />
-				</div>
+			<div className='flex items-center gap-x-5 lg:hidden'>
+				<button className='py-2 leading-none toggle-siteMenu' onClick={toggleMenu}><span className="material-icons-outlined">menu</span></button>					
+				<PageTitle text={pageTitle} tag="h2" className="md:hidden" />
 			</div>
 			{menuShown &&  
 				<div className='modal-backdrop' style={{ display: menuShown ? 'block' : 'none' }} onClick={toggleMenu}></div>
